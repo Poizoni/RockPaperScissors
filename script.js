@@ -26,18 +26,19 @@ let game = () => {
     for (let i = 1; i < 6; i++) {
         const computerSelection = computerPlay();
         let playerSelection = window.prompt('enter rock paper or scissors.', undefined);
-if (playerSelection.toLowerCase() === 'rock') {
-    playerSelection = rock;
-} else if (playerSelection.toLowerCase() === 'scissors') {
-    playerSelection = scissors;
-} else if (playerSelection.toLowerCase() === 'paper') {
-    playerSelection = paper;
-} else {
-    alert('are you sure you entered that correctly?')
-}
+            if (playerSelection.toLowerCase() === 'rock') {
+                playerSelection = rock;
+            } else if (playerSelection.toLowerCase() === 'scissors') {
+                playerSelection = scissors;
+            } else if (playerSelection.toLowerCase() === 'paper') {
+                playerSelection = paper;
+            } else {
+                alert('are you sure you entered that correctly?')
+            }
         let solo = playRound(playerSelection, computerSelection);
         console.log(i, `computer:${computerSelection} player:${playerSelection}`, solo)
     }
 }
 
-game();
+document.getElementById('start').onclick = function() { game(); };
+
