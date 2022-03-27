@@ -1,7 +1,6 @@
 const rock = 3;
 const scissors = 2;
 const paper = 1;
-const playerSelection = paper;
 
 let computerPlay = () => {
     let values = [rock, paper, scissors];
@@ -10,15 +9,35 @@ let computerPlay = () => {
 } //randomly return 1, 2, or 3
 
 const computerSelection = computerPlay();
-console.log(computerSelection)
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection > computerSelection) { 
         return('you win gg lel');
     } else if (playerSelection < computerSelection) {
         return('you lose noob');
-    } else {
+    } else if (playerSelection === computerSelection) {
         return('tie idiots');
+    } else {
+        return('game aborted')
     }
 } //compare size of computerPlay to a player selection
 
-console.log( playRound(playerSelection, computerSelection) );
+let game = () => {
+    for (let i = 1; i < 6; i++) {
+        const computerSelection = computerPlay();
+        let playerSelection = window.prompt('enter rock paper or scissors.', undefined);
+if (playerSelection.toLowerCase() === 'rock') {
+    playerSelection = rock;
+} else if (playerSelection.toLowerCase() === 'scissors') {
+    playerSelection = scissors;
+} else if (playerSelection.toLowerCase() === 'paper') {
+    playerSelection = paper;
+} else {
+    alert('are you sure you entered that correctly?')
+}
+        let solo = playRound(playerSelection, computerSelection);
+        console.log(i, `computer:${computerSelection} player:${playerSelection}`, solo)
+    }
+}
+
+game();
